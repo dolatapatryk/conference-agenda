@@ -1,4 +1,4 @@
-package com.patrykdolata.conference.domain;
+package com.patrykdolata.conference.scheduler;
 
 import java.io.IOException;
 import java.nio.file.Files;

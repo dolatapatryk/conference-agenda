@@ -1,8 +1,8 @@
-package com.patrykdolata.conference.domain;
+package com.patrykdolata.conference.scheduler;
 
-public class OutputWriter {
+class OutputWriter {
 
-    void writeOutputFile(Conference conference) {
+    void writeOutput(Conference conference) {
         int i = 1;
         for (var track : conference.tracks()) {
             System.out.printf("Track %d:%n", i);

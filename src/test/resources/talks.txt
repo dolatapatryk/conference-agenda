@@ -1,0 +1,4 @@
+3
+Writing Fast Tests Using Selenium 60min
+Overdoing it in Java 45min
+AngularJS for the Masses lightning

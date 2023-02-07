@@ -1,10 +1,13 @@
-package com.patrykdolata.conference.domain;
+package com.patrykdolata.conference.scheduler;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public record Event(LocalTime start, String name, int length) {
+record Event(LocalTime start, String name, int length) {
 
+    static final String LUNCH_EVENT = "Lunch";
+    static final int LUNCH_LENGTH = 60;
+    static final String SNACKS_EVENT = "Snacks";
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("hh:mma");
 
 
