@@ -1,4 +1,6 @@
 package com.patrykdolata.conference.domain;
 
-public record Track(Session morning, Session afternoon) {
+import java.util.List;
+
+public record Track(List<Event> events) {
 }

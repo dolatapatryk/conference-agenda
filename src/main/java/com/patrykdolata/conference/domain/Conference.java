@@ -1,4 +1,6 @@
 package com.patrykdolata.conference.domain;
 
-public record Conference(Track trackOne, Track trackTwo) {
+import java.util.List;
+
+public record Conference(List<Track> tracks) {
 }
