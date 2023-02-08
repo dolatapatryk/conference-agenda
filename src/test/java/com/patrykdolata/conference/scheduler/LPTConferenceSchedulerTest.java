@@ -3,10 +3,10 @@ package com.patrykdolata.conference.scheduler;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class LPTConferenceSchedulerTest {
 
@@ -56,8 +56,20 @@ class LPTConferenceSchedulerTest {
 
         // then
         assertEquals(3, result.tracks().size());
-        assertIterableEquals(result.tracks().get(0).events(), expectedFirstTrack);
-        assertIterableEquals(result.tracks().get(1).events(), expectedSecondTrack);
-        assertIterableEquals(result.tracks().get(2).events(), expectedThirdTrack);
+        assertIterableEquals(expectedFirstTrack, result.tracks().get(0).events());
+        assertIterableEquals(expectedSecondTrack, result.tracks().get(1).events());
+        assertIterableEquals(expectedThirdTrack, result.tracks().get(2).events());
+    }
+
+    @Test
+    void shouldReturnEmptyConference() {
+        // given
+        List<Talk> talks = Collections.emptyList();
+
+        // when
+        var result = scheduler.scheduleConference(talks);
+
+        // then
+        assertTrue(result.tracks().isEmpty());
     }
 }

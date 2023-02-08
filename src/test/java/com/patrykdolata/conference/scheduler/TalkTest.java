@@ -39,4 +39,17 @@ class TalkTest {
         var talk = "Rails for Java Developers 1h";
         assertThrows(IllegalArgumentException.class, () -> Talk.fromString(talk));
     }
+
+    @Test
+    void fromStringShouldReturnProperTalkEvenIfThereIsNumberInTitle() {
+        // given
+        var talk = "What's new in Java 11 120min";
+        var expected = new Talk(talk, 120);
+
+        // when
+        var result = Talk.fromString(talk);
+
+        // then
+        assertEquals(expected, result);
+    }
 }
