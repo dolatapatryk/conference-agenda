@@ -1,5 +1,6 @@
 package com.patrykdolata.conference.scheduler;
 
+import com.patrykdolata.conference.scheduler.exception.InvalidTalkLengthException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,8 +36,10 @@ class TalkTest {
 
     @Test
     void fromStringShouldThrowException() {
-        // given when then
+        // given
         var talk = "Rails for Java Developers 1h";
+
+        // when then
         assertThrows(IllegalArgumentException.class, () -> Talk.fromString(talk));
     }
 
@@ -51,5 +54,14 @@ class TalkTest {
 
         // then
         assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldThrowExceptionIfTalkLengthIsInvalid() {
+        // given
+        var talk = "Writing Fast Tests Using Selenium 250min";
+
+        // when then
+        assertThrows(InvalidTalkLengthException.class, () -> Talk.fromString(talk));
     }
 }

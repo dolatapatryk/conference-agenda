@@ -6,8 +6,8 @@ public class ConferenceAgendaRunner {
 
     public void run(String[] args) {
         var filename = args.length > 0 ? args[0] : "sample.txt";
-        var inputReader = new InputReader();
-        var talks = inputReader.readInputFile(filename);
+        var inputParser = new InputParser();
+        var talks = inputParser.parseInputFile(filename);
         var conference = strategy.scheduleConference(talks);
         var outputWriter = new OutputWriter();
         outputWriter.writeOutput(conference);
