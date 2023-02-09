@@ -35,3 +35,12 @@ mvn test
 4. There cannot be gaps between Talks but can be before Lunch if there is no suitable Talk to place.
 5. Talks in input file do not exceed 4 hours (afternoon session duration). If one of them is longer than 4 hours then
    exception is thrown.
+
+## Algorithm
+I provided LPT (Longest-processing-time-first) algorithm implementation of scheduler.
+
+The algorithm work as follows:
+1. Order the Talks by descending order of their length, such that the longest Talk is first.
+2. Schedule Talk in this sequence into a Track. The most suitable Talk, before session end, is scheduled.
+
+Tracks are added as needed.
