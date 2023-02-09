@@ -1,8 +1,8 @@
-package com.patrykdolata.conference.scheduler;
+package com.patrykdolata.conference.domain.model;
 
 import java.time.LocalTime;
 
-enum Session {
+public enum Session {
     MORNING(LocalTime.of(9, 0), LocalTime.of(12, 0)),
     AFTERNOON(LocalTime.of(13, 0), LocalTime.of(17, 0));
 

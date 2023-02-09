@@ -1,5 +1,7 @@
-package com.patrykdolata.conference.scheduler;
+package com.patrykdolata.conference.domain.scheduler;
 
+import com.patrykdolata.conference.domain.model.Event;
+import com.patrykdolata.conference.domain.model.Talk;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;

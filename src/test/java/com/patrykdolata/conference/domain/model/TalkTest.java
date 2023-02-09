@@ -1,6 +1,6 @@
-package com.patrykdolata.conference.scheduler;
+package com.patrykdolata.conference.domain.model;
 
-import com.patrykdolata.conference.scheduler.exception.InvalidTalkLengthException;
+import com.patrykdolata.conference.domain.exception.InvalidTalkLengthException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

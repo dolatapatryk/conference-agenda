@@ -1,4 +1,6 @@
-package com.patrykdolata.conference.scheduler;
+package com.patrykdolata.conference.domain.scheduler;
+
+import com.patrykdolata.conference.domain.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,7 @@ public class LPTConferenceScheduler implements ConferenceSchedulerStrategy {
     public Conference scheduleConference(List<Talk> talks) {
         // copy in case of immutable input list
         talks = new ArrayList<>(talks);
+        // sort by length descending
         talks.sort((o1, o2) -> o2.length() - o1.length());
         var tracks = new ArrayList<Track>();
         while (!talks.isEmpty()) {
@@ -31,10 +34,13 @@ public class LPTConferenceScheduler implements ConferenceSchedulerStrategy {
     }
 
     private Track scheduleTrack(List<Talk> talks) {
+        // schedule morning session
         var morningSession = Session.MORNING;
         var morningEvents = scheduleSessionEvents(morningSession, talks);
         morningEvents.add(new Event(morningSession.getEnd(), Event.LUNCH_EVENT, Event.LUNCH_LENGTH));
         var trackEvents = new ArrayList<>(morningEvents);
+
+        // schedule afternoon session
         var afternoonEvents = scheduleSessionEvents(Session.AFTERNOON, talks);
         trackEvents.addAll(afternoonEvents);
         var lastEvent = trackEvents.get(trackEvents.size() - 1);
@@ -50,12 +56,12 @@ public class LPTConferenceScheduler implements ConferenceSchedulerStrategy {
         var iterator = talks.listIterator();
         while (iterator.hasNext()) {
             var talk = iterator.next();
-            var newTime = actualTime.plusMinutes(talk.length());
-            if (newTime.isBefore(sessionEnd) || newTime.equals(sessionEnd)) {
-                var job = new Event(actualTime, talk.name(), talk.length());
-                events.add(job);
+            var talkEndTime = actualTime.plusMinutes(talk.length());
+            if (talkEndTime.isBefore(sessionEnd) || talkEndTime.equals(sessionEnd)) {
+                var event = new Event(actualTime, talk.name(), talk.length());
+                events.add(event);
                 iterator.remove();
-                actualTime = newTime;
+                actualTime = talkEndTime;
             }
         }
         return events;

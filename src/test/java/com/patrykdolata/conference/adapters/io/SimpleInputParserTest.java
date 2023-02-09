@@ -1,16 +1,16 @@
-package com.patrykdolata.conference.scheduler;
+package com.patrykdolata.conference.adapters.io;
 
-import com.patrykdolata.conference.scheduler.exception.InvalidTalksNumberException;
+import com.patrykdolata.conference.domain.model.Talk;
+import com.patrykdolata.conference.domain.exception.InvalidTalksNumberException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
-class InputParserTest {
+class SimpleInputParserTest {
 
-    private final InputParser parser = new InputParser();
+    private final SimpleInputParser parser = new SimpleInputParser();
 
     @Test
     void shouldParseInputProperly() {

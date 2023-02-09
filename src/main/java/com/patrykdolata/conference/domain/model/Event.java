@@ -1,17 +1,17 @@
-package com.patrykdolata.conference.scheduler;
+package com.patrykdolata.conference.domain.model;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-record Event(LocalTime start, String name, int length) {
+public record Event(LocalTime start, String name, int length) {
 
-    static final String LUNCH_EVENT = "Lunch";
-    static final int LUNCH_LENGTH = 60;
-    static final String SNACKS_EVENT = "Snacks";
+    public static final String LUNCH_EVENT = "Lunch";
+    public static final int LUNCH_LENGTH = 60;
+    public static final String SNACKS_EVENT = "Snacks";
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("hh:mma");
 
 
-    LocalTime getEnd() {
+    public LocalTime getEnd() {
         return start.plusMinutes(length);
     }
 

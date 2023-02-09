@@ -46,7 +46,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.patrykdolata.Main</mainClass>
+                            <mainClass>com.patrykdolata.ConferenceApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

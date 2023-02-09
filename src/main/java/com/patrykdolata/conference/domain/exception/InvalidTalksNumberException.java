@@ -1,4 +1,4 @@
-package com.patrykdolata.conference.scheduler.exception;
+package com.patrykdolata.conference.domain.exception;
 
 public class InvalidTalksNumberException extends RuntimeException {
 
